@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        a:hover {
+            opacity: 0.8;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #3498db;
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        header a {
+            margin-left: 15px;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: bold;
+            color: white;
+            background-color: #2980b9;
+        }
+        header a:hover {
+            background-color: #1c5980;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">Log out</a>
+        {% else %}
+            <a href="{% url 'login' %}">Sign in</a>
+            <a href="{% url 'register' %}">Sign up</a>
+        {% endif %}
+    </header>
+
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        This is footer
+    </footer>
+</body>
+</html>
