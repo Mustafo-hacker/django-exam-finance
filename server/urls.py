@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from finance.views import home, delete_user, add_transaction, edit_transaction
+from finance.views import home, delete_user, add_transaction, edit_transaction, edit_balance
 from accounts.views import register_view, login_view, logout_view
 
 urlpatterns = [
@@ -27,6 +27,6 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path("delete/<int:pk>", delete_user, name='delete'),
     path("add_transaction", add_transaction, name='add_transaction'),
-    path("edit/<int:pk>", edit_transaction, name='edit_transaction')
-
+    path("edit/<int:pk>", edit_transaction, name='edit_transaction'),
+    path("edit-balance/", edit_balance, name="edit_balance"),
 ]

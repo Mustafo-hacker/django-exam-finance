@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<h2>Изменить баланс</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label>Баланс пользователя:</label><br>
+    <input type="number" step="0.01" name="balance" value="{{ profile.balance }}" style="padding: 8px; width: 200px;">
+    <br><br>
+    <button type="submit"
+        style="padding: 8px 15px; background: #27ae60; color: white; border: none; border-radius: 5px;">
+        Сохранить
+    </button>
+</form>
+
+{% endblock %}
